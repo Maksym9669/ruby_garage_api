@@ -1,6 +1,10 @@
-class Api::ProjectsController < ApplicationController
+# frozen_string_literal: true
+
+module Api
+  class ProjectsController < ApplicationController
     def index
-     @projects = Project.all
-     render json: @projects
+      @projects = Project.all
+      render json: @projects
     end
+  end
 end
