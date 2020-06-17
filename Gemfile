@@ -5,6 +5,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem 'devise', '~> 4.2'
+gem 'devise-jwt', '~> 0.7.0'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'simplecov', '~> 0.18.5'
 gem 'brakeman', '~> 4.8', '>= 4.8.2'
 gem 'rubocop', '~> 0.85.1', require: false
@@ -29,7 +32,7 @@ gem 'puma', '~> 4.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
