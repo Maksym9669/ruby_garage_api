@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+
 gem 'json-schema', '~> 2.8', '>= 2.8.1'
 gem 'faker', '~> 2.12'
 gem 'shoulda-matchers', '~> 4.3'
@@ -43,7 +44,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
-  gem 'database_cleaner', '~> 1.8', '>= 1.8.5'
+  gem 'database_cleaner-active_record'
 end
 
 group :development do

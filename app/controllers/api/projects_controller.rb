@@ -7,7 +7,7 @@ module Api
     def index
       @projects = Project.all
       authorize @projects
-      render json: {data: @projects, user: current_user}
+      render json: { data: @projects, user: current_user }
     end
   end
 end
