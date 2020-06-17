@@ -3,9 +3,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   def respond_with(resource, _opts = {})
     if resource[:id]
-      render json: resource
+      render json: resource, status: 201
     else
-      # render json: {errors: "The user already exists"}
+      render json: resource.errors
     end
   end
 end

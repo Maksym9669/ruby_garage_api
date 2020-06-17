@@ -5,6 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+gem "pundit"
 gem 'devise', '~> 4.2'
 gem 'devise-jwt', '~> 0.7.0'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
