@@ -1,0 +1,35 @@
+AllCops:
+  Exclude:
+    - "vendor/**/*"
+    - ".git/**/*"
+    - "db/**/*"
+    - "bin/*"
+    - "config/*"
+    - "config/**/*"
+    - "lib/*"
+    - "node_modules/**/*"
+    - "test/**/*"
+    - "spec/**/*"
+    - "app/uploaders/**/*"
+    - "app/channels/**/*"
+    - "Gemfile"
+  TargetRubyVersion: 2.6
+
+Style/StringLiterals:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 105
+
+Style/Documentation:
+  Enabled: false
+
+Style/FormatStringToken:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 17
+
+Metrics/MethodLength:
+  CountComments: false
+  Max: 13

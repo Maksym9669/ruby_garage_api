@@ -1,7 +1,17 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
+
+gem "pundit"
+gem 'devise', '~> 4.2'
+gem 'devise-jwt', '~> 0.7.0'
+gem 'figaro', '~> 1.1', '>= 1.1.1'
+gem 'simplecov', '~> 0.18.5'
+gem 'brakeman', '~> 4.8', '>= 4.8.2'
+gem 'rubocop', '~> 0.85.1', require: false
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.1'
@@ -23,11 +33,12 @@ gem 'puma', '~> 4.1'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 4.0', '>= 4.0.1'
 end
 
 group :development do
