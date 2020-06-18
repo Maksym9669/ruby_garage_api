@@ -26,11 +26,17 @@ module Api
 
     def show 
       @project = Project.find_by(id: params[:id])
-      render json: { data: @project }
+      if @project
+        authorize @project
+        render json: { data: @project }
+      else
+        render json: { "error": "Project not found"}, status: 404
+      end
     end
 
     def update
       @project = Project.find_by(id: params[:id])
+      authorize @project
       if @project.update_attributes(project_params)
         render json: { data: @project}, status: 200
       else
@@ -39,7 +45,13 @@ module Api
     end
 
     def destroy
-      
+      @project = Project.find_by(id: params[:id])
+      authorize @project
+      if @project.destroy
+        render json: { success: { text: "Project was successfully deleted"}}, status: 200
+      else
+        render json: {"error": @project.errors}, status: 400
+      end
     end
 
     private
