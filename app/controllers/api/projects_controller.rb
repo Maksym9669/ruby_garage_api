@@ -6,7 +6,7 @@ module Api
 
     def index
       @projects = Project.where("user_id = ?", current_user[:id])
-      authorize @projects if !@projects.empty?
+      authorize @projects unless @projects.empty?
       render json: { data: @projects, user: current_user }
     end
 
@@ -29,7 +29,7 @@ module Api
       @tasks = Task.where("project_id=?", params[:id])
       if @project
         authorize @project
-        render json: { data: {project: @project, tasks: @tasks} }
+        render json: { data: { project: @project, tasks: @tasks } }
       else
         render json: { "error": "Project not found" }, status: 404
       end
