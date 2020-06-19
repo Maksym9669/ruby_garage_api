@@ -2,8 +2,10 @@
 
 module Api
   class TasksController < ApplicationController
+    before_action :authenticate_user!
+
     def index
-      @tasks = Task.where("project_id = ?", params[:project_id])
+      @tasks = Task.where("project_id = ?", params[:project_id]).order(priority: :desc)
       authorize @tasks unless @tasks.empty?
       render json: { data: @tasks }
     end

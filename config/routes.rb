@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     resources :projects do
       resources :tasks
       get 'tasks/:id/done', to: 'tasks_done#update'
+      get 'tasks/:id/up', to: 'priority_up#update'
+      get 'tasks/:id/down', to: 'priority_down#update'
     end
   end
 end
