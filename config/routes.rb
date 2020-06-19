@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :api, :defaults => {:format => :json} do
     resources :projects do
       resources :tasks
+      get 'tasks/:id/done', to: 'tasks_done#update'
     end
   end
 end
