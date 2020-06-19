@@ -6,7 +6,7 @@ module Api
 
     def index
       @projects = Project.where("user_id = ?", current_user[:id])
-      authorize @projects
+      authorize @projects if !@projects.empty?
       render json: { data: @projects, user: current_user }
     end
 
@@ -26,7 +26,7 @@ module Api
 
     def show
       @project = Project.find_by(id: params[:id])
-      @tasks = Task.where("project_id=?", @project[:id])
+      @tasks = Task.where("project_id=?", params[:id])
       if @project
         authorize @project
         render json: { data: {project: @project, tasks: @tasks} }
