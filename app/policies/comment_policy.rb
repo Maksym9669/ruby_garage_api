@@ -16,7 +16,6 @@ class CommentPolicy < ApplicationPolicy
   private
 
   def authorize_comment
-    #   user[:id] == record[:user_id]
-    true
+    user[:id] == Project.find_by(id: record[:project_id])[:user_id]
   end
 end

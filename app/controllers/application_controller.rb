@@ -5,6 +5,6 @@ class ApplicationController < ActionController::API
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   def user_not_authorized
-    render json: { "error": "User is not authorized" }, status: 401
+    render json: { "error": I18n.t("not authorized") }, status: 401
   end
 end

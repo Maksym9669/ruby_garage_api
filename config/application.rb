@@ -45,5 +45,8 @@ module RubyGarageApi
         )
       end
     end
+
+    config.i18n.available_locales = [:en, :ru]
+    config.i18n.default_locale = :en
   end
 end

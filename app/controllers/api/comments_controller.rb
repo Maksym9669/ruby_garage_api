@@ -6,7 +6,7 @@ module Api
 
     def index
       @comments = Comment.where("task_id = ?", params[:task_id])
-      authorize @comments unless @comments.empty?
+      authorize @comments if @comments.present?
       render json: { data: @comments }
     end
 
@@ -20,13 +20,12 @@ module Api
         authorize @comment
         render json: { data: @comment }
       else
-        render json: { "error": "Comment not found" }, status: 404
+        render json: { "error": I18n.t("Comment not found") }, status: 404
       end
     end
 
     def create
       @comment = Comment.new(comment_params)
-      # @current_courier.license = params[:license]
       if @comment.save
         render json: { data: @comment }, status: 201
       else
@@ -39,12 +38,12 @@ module Api
       if @comment
         authorize @comment
         if @comment.destroy
-          render json: { success: { text: "Comment was successfully deleted" } }, status: 200
+          render json: { success: { text: I18n.t("Comment was successfully deleted") }, status: 200
         else
           render json: { "error": @comment.errors }, status: 400
         end
       else
-        render json: { "error": "Comment not found" }, status: 404
+        render json: { "error": I18n.t("Comment not found") }, status: 404
       end
     end
 
