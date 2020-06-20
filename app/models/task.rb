@@ -2,6 +2,7 @@
 
 class Task < ApplicationRecord
   belongs_to :project
+  has_many :comments, dependent: :destroy
   validates :name, presence: true, uniqueness: true
   validates :status, presence: true, inclusion: { in: %w[active done] }
   after_create :set_priority
