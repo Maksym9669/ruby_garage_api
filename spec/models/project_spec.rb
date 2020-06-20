@@ -8,7 +8,7 @@ RSpec.describe Project, type: :model do
             project = create(:project, user_id: 14)
             expect(project).to be_valid
         end
-        
+
         it "Is not valid without a name" do
             project = create(:project, user_id: 15)
             project.name = nil
