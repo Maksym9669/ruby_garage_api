@@ -7,7 +7,7 @@ class Task < ApplicationRecord
   after_create :set_priority
 
   def set_priority
-    self.priority = self.id
-    self.save
+    self.priority = id
+    save
   end
 end

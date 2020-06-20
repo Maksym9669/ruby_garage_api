@@ -3,7 +3,7 @@
 module Api
   class TasksDoneController < ApplicationController
     before_action :authenticate_user!
-    
+
     def update
       @task = Task.find_by(id: params[:id])
       if @task
