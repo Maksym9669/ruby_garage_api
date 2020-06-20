@@ -24,6 +24,7 @@ module Api
 
       def create
         @comment = Comment.new(comment_params)
+        # @current_courier.license = params[:license]
         if @comment.save
           render json: { data: @comment }, status: 201
         else
@@ -48,7 +49,7 @@ module Api
       private
 
       def comment_params
-        params.permit(:content, :task_id)
+        params.permit(:content, :task_id, :attachment)
       end
   end
 end
