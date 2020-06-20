@@ -54,7 +54,7 @@ RSpec.describe Api::ProjectsController, :type => :controller do
       project = create(:project, user_id: 2)
       get :index
       expect(project[:user_id]).to eq(2)
-      # expect(JSON.parse(response.body)["data"].first["name"]).to eq("MyString")
+      expect(JSON.parse(response.body)["data"].first["name"]).to eq("MyString")
     end
 
     it "Response match the schema" do

@@ -2,8 +2,7 @@
 
 class TaskPolicy < ApplicationPolicy
   def index?
-    # user[:id] == Project.find_by(id: record.first[:project_id])[:user_id]
-    true
+    user[:id] == Project.find_by(id: record.first[:project_id])[:user_id]
   end
 
   def update?

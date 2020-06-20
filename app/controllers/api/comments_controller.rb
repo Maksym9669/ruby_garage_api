@@ -38,7 +38,7 @@ module Api
       if @comment
         authorize @comment
         if @comment.destroy
-          render json: { success: { text: I18n.t("Comment was successfully deleted") }}, status: 200
+          render json: { success: { text: I18n.t("Comment was successfully deleted") } }, status: 200
         else
           render json: { "error": @comment.errors }, status: 400
         end

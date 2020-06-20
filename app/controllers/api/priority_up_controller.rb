@@ -20,11 +20,11 @@ module Api
     private
 
     def task
-        @task ||= Task.find_by(id: params[:id])
+      @task ||= Task.find_by(id: params[:id])
     end
 
     def task_mover
-        @task_mover = TaskMover.new(params[:id], params[:project_id])
+      @task_mover = TaskMover.new(params[:id], params[:project_id])
     end
   end
 end

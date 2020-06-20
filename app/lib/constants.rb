@@ -5,4 +5,3 @@ module Constants
   TASK_CANT_MOVE = 2
   TASK_NOT_FOUND = 3
 end
-  
