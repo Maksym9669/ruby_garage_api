@@ -6,7 +6,7 @@ module Api
 
     def index
       @tasks = Task.where("project_id = ?", params[:project_id]).order(priority: :desc)
-      authorize @tasks unless @tasks.empty?
+      authorize @tasks if @tasks.present?
       render json: { data: @tasks }
     end
 
@@ -20,7 +20,7 @@ module Api
         authorize @task
         render json: { data: @task }
       else
-        render json: { "error": "Task not found" }, status: 404
+        render json: { "error": I18n.t("Task not found") }, status: 404
       end
     end
 
@@ -44,7 +44,7 @@ module Api
           render json: { "error": @task.errors }, status: 400
         end
       else
-        render json: { "error": "Task not found" }, status: 404
+        render json: { "error": I18n.t("Task not found") }, status: 404
       end
     end
 
@@ -53,12 +53,12 @@ module Api
       if @task
         authorize @task
         if @task.destroy
-          render json: { success: { text: "Task was successfully deleted" } }, status: 200
+          render json: { success: { text: I18n.t("Task was successfully deleted") } }, status: 200
         else
           render json: { "error": @task.errors }, status: 400
         end
       else
-        render json: { "error": "Task not found" }, status: 404
+        render json: { "error": I18n.t("Task not found") }, status: 404
       end
     end
 

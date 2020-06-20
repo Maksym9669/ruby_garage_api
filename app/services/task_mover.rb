@@ -13,12 +13,12 @@ class TaskMover
     if @task
       if task_index != 0
         swap_priorities(task_index, task_index - 1)
-        1
+        Constants::TASK_MOVED
       else
-        2
+        Constants::TASK_CANT_MOVE
       end
     else
-      3
+      Constants::TASK_NOT_FOUND
     end
   end
 
@@ -29,12 +29,12 @@ class TaskMover
     if @task
       if task_index != @tasks.length - 1
         swap_priorities(task_index, task_index + 1)
-        1
+        Constants::TASK_MOVED
       else
-        2
+        Constants::TASK_CANT_MOVE
       end
     else
-      3
+      Constants::TASK_NOT_FOUND
     end
   end
 

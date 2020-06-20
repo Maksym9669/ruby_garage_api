@@ -26,12 +26,12 @@ module Api
 
     def show
       @project = Project.find_by(id: params[:id])
-      @tasks = Task.where("project_id=?", params[:id])
+      @tasks = Task.where("project_id=?", params[:id]).order(priority: :desc)
       if @project
         authorize @project
         render json: { data: { project: @project, tasks: @tasks } }
       else
-        render json: { "error": "Project not found" }, status: 404
+        render json: { "error": I18n.t("Project not found") }, status: 404
       end
     end
 
@@ -45,7 +45,7 @@ module Api
           render json: { "error": @project.errors }, status: 400
         end
       else
-        render json: { "error": "Project not found" }, status: 404
+        render json: { "error": I18n.t("Project not found") }, status: 404
       end
     end
 
@@ -54,12 +54,12 @@ module Api
       if @project
         authorize @project
         if @project.destroy
-          render json: { success: { text: "Project was successfully deleted" } }, status: 200
+          render json: { success: { text: I18n.t("Project was successfully deleted") } }, status: 200
         else
           render json: { "error": @project.errors }, status: 400
         end
       else
-        render json: { "error": "Project not found" }, status: 404
+        render json: { "error": I18n.t("Project not found") }, status: 404
       end
     end
 

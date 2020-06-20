@@ -17,6 +17,7 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem 'simplecov', '~> 0.18.5'
 gem 'brakeman', '~> 4.8', '>= 4.8.2'
 gem 'rubocop', '~> 0.85.1', require: false
+gem 'rails-i18n', '~> 6.0'
 gem 'file_validators'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

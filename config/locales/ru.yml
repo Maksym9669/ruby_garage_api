@@ -1,0 +1,12 @@
+ru:
+  not authorized: "Пользователь не авторизован"
+  Comment not found: "Комментарий не найден"
+  Comment was successfully deleted: "Комментарий был успешно удален"
+  Task was moved down: "Таска опустилась"
+  This task can't be moved down: "Таска не может опуститься"
+  Task was moved up: "Таска поднялась"
+  This task can't be moved up: "Таска не может подняться"
+  Task not found: "Таска не найдена"
+  Project not found: "Проект не найден"
+  Project was successfully deleted: "Проект был успешно удален"
+  Task was successfully deleted: "Таска была успешно удалена"

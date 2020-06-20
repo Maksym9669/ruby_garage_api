@@ -11,7 +11,7 @@ module Api
         @task.update(status: "done")
         render json: { data: @task }, status: 200
       else
-        render json: { "error": "Task not found" }, status: 404
+        render json: { "error": I18n.t("Task not found") }, status: 404
       end
     end
 
