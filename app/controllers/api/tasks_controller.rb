@@ -49,7 +49,7 @@ module Api
     end
 
     def destroy
-      @task = Project.find_by(id: params[:id])
+      @task = Task.find_by(id: params[:id])
       if @task
         authorize @task
         if @task.destroy

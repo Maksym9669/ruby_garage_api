@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :task do
     name { "MyString" }
-    status { "MyString" }
+    status { "active" }
   end
 end
