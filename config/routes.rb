@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  root "api/comments#index"
+  mount Rswag::Ui::Engine => '/api-docs'
+  mount Rswag::Api::Engine => '/api-docs'
   devise_for :users,
                path: '',
                path_names: {
@@ -19,7 +22,6 @@ Rails.application.routes.draw do
       get 'tasks/:id/done', to: 'tasks_done#update'
       get 'tasks/:id/up', to: 'priority_up#update'
       get 'tasks/:id/down', to: 'priority_down#update'
-
     end
   end
 end
