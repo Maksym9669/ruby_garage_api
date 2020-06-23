@@ -4,11 +4,148 @@ info:
   title: API V1
   version: v1
 paths:
+  "/api/projects/{project_id}/tasks/{task_id}/comments":
+    get:
+      summary: Retrieves comments
+      tags:
+      - Comments
+      parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: task_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Comments found
+          content: {}
+        '404':
+          description: Comments not found
+          content: {}
+    post:
+      summary: Creates a comment
+      tags:
+      - Comment
+      parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: task_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Comment created
+          content: {}
+        '400':
+          description: Project not created
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                attachment:
+                  type: string
+              required:
+              - content
+  "/api/projects/{project_id}/tasks/{task_id}/comments/{id}":
+    get:
+      summary: Retrieves a comment
+      tags:
+      - Comment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: task_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Comment found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  project_id:
+                    type: integer
+                  task_id:
+                    type: integer
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                  content:
+                    type: string
+                  attachment:
+                    type: string
+                required:
+                - id
+                - task_id
+                - project_id
+                - created_at
+                - updated_at
+                - content
+        '404':
+          description: Comment not found
+          content: {}
+    delete:
+      summary: Delete a comment
+      tags:
+      - Comment
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: task_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Comment was successfully deleted
+          content: {}
+        '404':
+          description: Comment not found
+          content: {}
   "/api/projects/":
     get:
-      summary: Retrieves project
+      summary: Retrieves projects
       tags:
-      - Project
+      - Projects
       parameters:
       - name: id
         in: path
@@ -135,6 +272,277 @@ paths:
           content: {}
         '404':
           description: Project not found
+          content: {}
+  "/api/projects/{project_id}/tasks":
+    get:
+      summary: Retrieves tasks
+      tags:
+      - Tasks
+      parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Tasks found
+          content: {}
+        '404':
+          description: Tasks not found
+          content: {}
+    post:
+      summary: Creates a task
+      tags:
+      - Task
+      parameters:
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Task created
+          content: {}
+        '400':
+          description: Task not created
+          content: {}
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                status:
+                  type: string
+                priority:
+                  type: integer
+                id:
+                  type: integer
+                project_id:
+                  type: integer
+                created_at:
+                  type: string
+                updated_at:
+                  type: string
+              required:
+              - name
+  "/api/projects/{project_id}/tasks/{id}":
+    get:
+      summary: Retrieves a task
+      tags:
+      - Task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Task found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  status:
+                    type: string
+                  priority:
+                    type: integer
+                  id:
+                    type: integer
+                  project_id:
+                    type: integer
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                required:
+                - id
+                - name
+                - project_id
+                - created_at
+                - updated_at
+                - status
+                - priority
+        '404':
+          description: Task not found
+          content: {}
+    put:
+      summary: Updates a task
+      tags:
+      - Task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Task updated
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  status:
+                    type: string
+                  priority:
+                    type: integer
+                  id:
+                    type: integer
+                  project_id:
+                    type: integer
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                required:
+                - id
+                - name
+                - project_id
+                - created_at
+                - updated_at
+                - status
+                - priority
+        '404':
+          description: Task not found
+          content: {}
+    delete:
+      summary: Delete a task
+      tags:
+      - Task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Task was successfully deleted
+          content: {}
+        '404':
+          description: Task not found
+          content: {}
+  "/api/projects/{project_id}/tasks/{id}/done":
+    get:
+      summary: Completes a task
+      tags:
+      - Task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Task completed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  status:
+                    type: string
+                  priority:
+                    type: integer
+                  id:
+                    type: integer
+                  project_id:
+                    type: integer
+                  created_at:
+                    type: string
+                  updated_at:
+                    type: string
+                required:
+                - id
+                - name
+                - project_id
+                - created_at
+                - updated_at
+                - status
+                - priority
+        '404':
+          description: Task not found
+          content: {}
+  "/api/projects/{project_id}/tasks/{id}/up":
+    get:
+      summary: Move a task up
+      tags:
+      - Task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Task moved up
+          content: {}
+        '404':
+          description: Task not found
+          content: {}
+  "/api/projects/{project_id}/tasks/{id}/down":
+    get:
+      summary: Move a task down
+      tags:
+      - Task
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: project_id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Task moved down
+          content: {}
+        '404':
+          description: Task not found
           content: {}
 servers:
 - url: https://{defaultHost}

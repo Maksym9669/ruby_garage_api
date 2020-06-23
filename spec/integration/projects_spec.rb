@@ -3,8 +3,8 @@ require 'swagger_helper'
 describe 'Projects API' do
 
   path '/api/projects/' do
-    get 'Retrieves project' do
-        tags 'Project'
+    get 'Retrieves projects' do
+        tags 'Projects'
         produces 'application/json'
         parameter name: :id, in: :path, type: :string
   
